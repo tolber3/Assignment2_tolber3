@@ -1,0 +1,292 @@
+{
+  "name": "init_722D",
+  "created_utc": "2026-10-01T22:38:40.585708+00:00",
+  "effective_config": {
+    "project_name": "InitGPRTest-722D-TRN722_TST724_S11_wExt-raw-limfreq2",
+    "seed": 654322,
+    "paths": {
+      "scratch_root": "/scratch/tolber3/",
+      "dataset_raw_subdir": "/home/tolber3/plasticParticleTest/bactTestData/",
+      "remake_processed_data": false,
+      "recalc_data": false,
+      "checkpoints_subdir": "checkpoints/Bact",
+      "logs_subdir": "logs/Bact",
+      "aim_repo_subdir": "aim-repos/Bact",
+      "run_dir": "/home/tolber3/plasticParticleTest/BML",
+      "train_datasets": [
+        "722D-722_S11_sets"
+      ],
+      "test_datasets": [
+        "722D-724_S11_sets"
+      ]
+    },
+    "training": {
+      "table": "dS",
+      "target_column": "label",
+      "target_mode": "raw",
+      "drop_ext": false,
+      "freqs": [
+        0.08,
+        0.2,
+        0.5,
+        1,
+        1.5,
+        2,
+        2.5,
+        3,
+        3.5,
+        4.2,
+        5,
+        5.5
+      ],
+      "test_size": 1,
+      "feature_regex": null,
+      "impute_strategy": "median",
+      "standardize": true,
+      "scaler": "robust",
+      "n_restarts_optimizer": 0,
+      "max_iter_predict": 50,
+      "multi_class": "one_vs_rest",
+      "max_train_rows": null,
+      "aim_enabled": true,
+      "save_predictions": true,
+      "feature_importance": {
+        "enabled": true,
+        "split": "test",
+        "scoring": "f1_macro",
+        "n_repeats": 5,
+        "max_rows": null,
+        "top_n_aim": 50
+      },
+      "kernel": {
+        "type": "rbf",
+        "constant_value": 10.0,
+        "length_scale": 1.0
+      }
+    },
+    "form_sets": {
+      "dataset_processed_subdir": "BactData/MLSets/init_722D",
+      "missing_frequency_strategy": "duplicate_cycle",
+      "write_csv_fallback": false,
+      "travel_distance_um": 120.0,
+      "metadata_dir": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs",
+      "calculations": {
+        "use_voloutput": true,
+        "calculate_missing_in_script": false
+      },
+      "outputs": [
+        {
+          "name": "722D-722_S11S22_ECBEK12",
+          "mode": "all",
+          "datasets": {
+            "722Bact1VID": {
+              "label": "Bact_ECK12",
+              "device": "722-10u"
+            },
+            "722Bact2VID": {
+              "label": "Bact_ECB",
+              "device": "722-10u"
+            },
+            "722Bact1S22VID": {
+              "label": "Bact_ECK12",
+              "device": "722-10u"
+            },
+            "722Bact2S22VID": {
+              "label": "Bact_ECB",
+              "device": "722-10u"
+            }
+          }
+        },
+        {
+          "name": "722D-724_S11S22_ECBEK12",
+          "mode": "all",
+          "datasets": {
+            "724Bact1VID": {
+              "label": "Bact_ECK12",
+              "device": "722-10u"
+            },
+            "724Bact2VID": {
+              "label": "Bact_ECB",
+              "device": "722-10u"
+            },
+            "724Bact1S22VID": {
+              "label": "Bact_ECK12",
+              "device": "722-10u"
+            },
+            "724Bact2S22VID": {
+              "label": "Bact_ECB",
+              "device": "722-10u"
+            }
+          }
+        },
+        {
+          "name": "722D-724_S11_ECBEK12",
+          "mode": "all",
+          "datasets": {
+            "724Bact1VID": {
+              "label": "Bact_ECK12",
+              "device": "722-10u"
+            },
+            "724Bact2VID": {
+              "label": "Bact_ECB",
+              "device": "722-10u"
+            }
+          }
+        },
+        {
+          "name": "722D-722_S11_ECBEK12",
+          "mode": "all",
+          "datasets": {
+            "722Bact1VID": {
+              "label": "Bact_ECK12",
+              "device": "722-10u"
+            },
+            "722Bact2VID": {
+              "label": "Bact_ECB",
+              "device": "722-10u"
+            }
+          }
+        }
+      ]
+    },
+    "_config_path": "/home/tolber3/plasticParticleTest/BML/configs/gpr_config-722D.yaml"
+  },
+  "outputs": [
+    {
+      "name": "722D-722_S11S22_ECBEK12",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.08,
+        0.2,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        3.5,
+        4.2,
+        5.0,
+        5.5
+      ],
+      "row_counts": {
+        "dS": 212,
+        "full": 212
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_722D/722D-722_S11S22_ECBEK12_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_722D/722D-722_S11S22_ECBEK12_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/722D-722_S11S22_ECBEK12.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/init_722D/722D-722_S11S22_ECBEK12.md"
+    },
+    {
+      "name": "722D-724_S11S22_ECBEK12",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.08,
+        0.2,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        3.5,
+        4.2,
+        5.0,
+        5.5
+      ],
+      "row_counts": {
+        "dS": 178,
+        "full": 178
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_722D/722D-724_S11S22_ECBEK12_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_722D/722D-724_S11S22_ECBEK12_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/722D-724_S11S22_ECBEK12.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/init_722D/722D-724_S11S22_ECBEK12.md"
+    },
+    {
+      "name": "722D-724_S11_ECBEK12",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.08,
+        0.2,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        3.5,
+        4.2,
+        5.0,
+        5.5
+      ],
+      "row_counts": {
+        "dS": 59,
+        "full": 59
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_722D/722D-724_S11_ECBEK12_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_722D/722D-724_S11_ECBEK12_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/722D-724_S11_ECBEK12.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/init_722D/722D-724_S11_ECBEK12.md"
+    },
+    {
+      "name": "722D-722_S11_ECBEK12",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.08,
+        0.2,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        3.5,
+        4.2,
+        5.0,
+        5.5
+      ],
+      "row_counts": {
+        "dS": 112,
+        "full": 112
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_722D/722D-722_S11_ECBEK12_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_722D/722D-722_S11_ECBEK12_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/722D-722_S11_ECBEK12.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/init_722D/722D-722_S11_ECBEK12.md"
+    }
+  ]
+}

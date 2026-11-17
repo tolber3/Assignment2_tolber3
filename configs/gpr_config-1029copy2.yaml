@@ -1,0 +1,312 @@
+# Configuration for gpr classification
+
+project_name: "PrelimGPRTest-1112Prelim_TrainOnly-S11"
+seed: 654322
+
+# All paths use scratch storage
+paths:
+  scratch_root: "/scratch/tolber3/"  
+  dataset_raw_subdir: '/home/tolber3/plasticParticleTest/bactTestData/'           # Raw data 
+  
+  # remake_processed_data: "/home/tolber3/plasticParticleTest/BML/scripts/set_MDs/init_622-B.JSON" #can point to json if needed to recreate same dataset
+  remake_processed_data: False
+  recalc_data: False
+  
+  checkpoints_subdir: "checkpoints/Bact"
+  logs_subdir: "logs/Bact"
+  aim_repo_subdir: "aim-repos/Bact"  # Aim repo in scratch to avoid filling home
+  run_dir: '/home/tolber3/plasticParticleTest/BML' #project python scripts directory
+  # train_datasets: ["1029_S11_ECH7-2","115_S11_List-1"] # "115_S11_List-1"   "115_S11_List-2"  "1029_S11_ECH7-1"   "1029_S11_ECH7-2"     ["1029_S22_ECH7-2","115_S22_List-1"]
+  # test_datasets: ["1029_S11_ECH7-1","115_S11_List-2"] #test set used in training  ["1029_S22_ECH7-1","115_S22_List-2"]
+
+  train_datasets: ["1112_ECH-S11","1112_ECK12-S11","1112_ECB-S11"] # "115_S11_List-1"   "115_S11_List-2"  "1029_S11_ECH7-1"   "1029_S11_ECH7-2"   "1112_ECH-S11" "1112_ECB-S11" "1112_ECK12-S11"
+  test_datasets: [] #test set used in training 
+  # ["1112_ECH-S11" ,"1112_ECB-S11", "1112_ECK12-S11"]    ["1029_S22_ECH7-1"  ,"1029_S22_ECH7-2"] ["1112_ECH-S22","1112_ECK12-S11"] 
+
+# Training settings used by BML/src/BactTrain-gpr.py
+training:
+  table: "dS"                         # dS uses only compact delta features; full can be used with feature_regex changes
+  target_column: "label"
+  target_mode: "raw"  # maps Bact_* labels to Bacteria and Particle labels to Particle #Option: "raw" uses raw labels, "binary_bacteria_particle" maps Bact_* labels to Bacteria and Particle labels to Particle
+  drop_ext: true                      # true removes duplicated/cyclic extension rows before training
+  # Frequency features to use when forming ML samples and when selecting train/test model features.
+  # Use a GHz list like [1.5, 2, "2.5GHz"] or use "all" / ["all"] to keep every available frequency.
+
+  freqs: "all"
+  test_size: 0.3                     # only used if paths.test_datasets is empty
+  feature_regex: null                  # null defaults to _dS columns for the dS table; e.g. "(dS11m|dS21m)" selects only those feature types
+
+  # Missing-value fill method used by sklearn SimpleImputer.
+  # Options: "median" (robust default), "mean", "most_frequent", or "constant".
+  impute_strategy: "median"
+
+  # If true, scale numeric features before GPR. Usually keep true for RBF kernels;
+  # false leaves raw feature units unchanged and ignores the scaler option below.
+  standardize: true
+
+  # Scaling method used when standardize is true.
+  # Options: "standard" (StandardScaler: mean/std), "robust" (RobustScaler: median/IQR),
+  # or "none" to skip scaling while leaving standardize true for quick config toggles.
+  scaler: "robust"
+
+  # Number of extra kernel optimizer restarts after the initial fit.
+  # 0 is fastest/reproducible; 1-5 can improve kernel hyperparameters but is slower.
+  n_restarts_optimizer: 10
+
+  # Max Newton iterations used internally when predicting class probabilities.
+  # Increase to 200-500 if probability prediction convergence warnings appear.
+  max_iter_predict: 50
+
+  # Multi-class strategy for GaussianProcessClassifier.
+  # Options: "one_vs_rest" (default, faster) or "one_vs_one" (can help with many classes).
+  multi_class: "one_vs_rest"
+  max_train_rows: null                 # set an integer for faster trial runs
+  aim_enabled: true
+  save_predictions: true
+
+  # Permutation feature importance is calculated after model fitting and tracked in Aim.
+  # split: "test" uses held-out data; "train" can be useful when there is no useful test set.
+  # scoring can be any sklearn scorer compatible with classification, e.g. "f1_macro", "accuracy", "balanced_accuracy".
+  feature_importance:
+    enabled: true
+    split: "test"
+    scoring: "f1_macro"
+    n_repeats: 5
+    max_rows: null      # set an integer to speed up importance on large datasets
+    top_n_aim: 50       # number of rows shown in the Aim table/text
+
+  kernel:
+    # Kernel type used by BactTrain-gpr.py.
+    # Options: "rbf" for smooth nonlinear boundaries, or "dot_product" for a linear-style kernel.
+    type: "rbf"
+
+    # RBF-only amplitude multiplier from ConstantKernel. Larger values allow higher signal variance.
+    # If sklearn warns this hit the upper bound, try increasing this starting value or script bounds.
+    constant_value: 10.0
+
+    # RBF-only length scale. Smaller values fit more local/complex decision boundaries;
+    # larger values make smoother/global boundaries. Try 0.1, 1.0, 10.0 as starting points.
+    length_scale: 1.0
+
+    # dot_product-only option if type is changed to "dot_product":
+    # sigma_0: 1.0
+
+
+# Dataset formation settings used by BML/scripts/form_sets.py
+form_sets:
+  dataset_processed_subdir: "BactData/MLSets/Prelim_Pathogen"  # DIR USED FOR SAVING PROCESSED DATA IN SCRATCH (also where code looks for processed datasets)
+  missing_frequency_strategy: duplicate_cycle  # duplicate_cycle or blank
+  write_csv_fallback: False                     # useful if pyarrow/fastparquet is unavailable
+  travel_distance_um: 120.0
+  metadata_dir: "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs"
+  calculations:
+    use_voloutput: true
+    calculate_missing_in_script: false
+  outputs:
+  
+    - name: "1029_S11S22_ECH7-all"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact1VID":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+        "1029Bact1VIDS22":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+
+        "1029Bact2VID":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+        "1029Bact2VIDS22":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+    
+  
+    - name: "1029_S11_ECH7-all"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact1VID":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+        "1029Bact2VID":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+    - name: "1029_S22_ECH7-all"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact1VIDS22":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+        "1029Bact2VIDS22":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+    - name: "1029_S11S22_ECH7-1"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact1VID":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+        "1029Bact1VIDS22":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+    - name: "1029_S11_ECH7-1"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact1VID":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+    - name: "1029_S22_ECH7-1"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact1VIDS22":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+
+    - name: "1029_S11S22_ECH7-2"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact2VID":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+        "1029Bact2VIDS22":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+    - name: "1029_S11_ECH7-2"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact2VID":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+    - name: "1029_S22_ECH7-2"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1029Bact2VIDS22":
+          label: "Bact_ECH7"
+          device: "1014-10u_Sngl"
+
+
+
+
+
+    - name: "115_S11S22_List-all"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact1VID":
+          label: "Bact_List1"
+          device: "1014-10u_Sngl"
+        "115Bact1VIDS22":
+          label: "Bact_List1"
+          device: "1014-10u_Sngl"
+
+        "115Bact2VID":
+          label: "Bact_List2"
+          device: "1014-10u_Sngl"
+        "115Bact2VIDS22":
+          label: "Bact_List2"
+          device: "1014-10u_Sngl"
+    - name: "115_S11_List-all" 
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact1VID":
+          label: "Bact_List1"
+          device: "1014-10u_Sngl"
+        "115Bact2VID":
+          label: "Bact_List2"
+          device: "1014-10u_Sngl"
+
+    - name: "115_S22_List-all"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact1VIDS22":
+          label: "Bact_List1"
+          device: "1014-10u_Sngl"
+        "115Bact2VIDS22":
+          label: "Bact_List2"
+          device: "1014-10u_Sngl"
+
+
+    - name: "115_S11S22_List-1"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact1VID":
+          label: "Bact_List1"
+          device: "1014-10u_Sngl"
+        "115Bact1VIDS22":
+          label: "Bact_List1"
+          device: "1014-10u_Sngl"
+    - name: "115_S11_List-1"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact1VID":
+          label: "Bact_List1"
+          device: "1014-10u_Sngl"
+    - name: "115_S22_List-1"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact1VIDS22":
+          label: "Bact_List1"
+          device: "1014-10u_Sngl"
+
+
+
+    - name: "115_S11S22_List-2"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact2VID":
+          label: "Bact_List2"
+          device: "1014-10u_Sngl"
+        "115Bact2VIDS22":
+          label: "Bact_List2"
+          device: "1014-10u_Sngl"
+    - name: "115_S11_List-2"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact2VID":
+          label: "Bact_List2"
+          device: "1014-10u_Sngl"
+    - name: "115_S22_List-2"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "115Bact2VIDS22":
+          label: "Bact_List2"
+          device: "1014-10u_Sngl"
+
+
+
+    - name: "1112_ECB-S11"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1112Bact2VID":
+          label: "Bact_B"
+          device: "1111-10u_Sngl"
+    - name: "1112_ECB-S22"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1112Bact2VIDS22":
+          label: "Bact_B"
+          device: "1111-10u_Sngl"
+
+    - name: "1112_ECK12-S11"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1112Bact1VID":
+          label: "Bact_K12"
+          device: "1111-10u_Sngl"
+    - name: "1112_ECK12-S22"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1112Bact1VIDS22":
+          label: "Bact_K12"
+          device: "1111-10u_Sngl"
+    - name: "1112_ECH-S11"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1112Bact3VID":
+          label: "Bact_H"
+          device: "1111-10u_Sngl"
+    - name: "1112_ECH-S22"
+      mode: "all" #options: all, pairs_only, unpaired_only
+      datasets:
+        "1112Bact3VIDS22":
+          label: "Bact_H"
+          device: "1111-10u_Sngl"

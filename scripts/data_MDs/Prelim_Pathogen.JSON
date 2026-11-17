@@ -1,0 +1,1185 @@
+{
+  "name": "Prelim_Pathogen",
+  "created_utc": "2026-11-16T23:08:34.598594+00:00",
+  "effective_config": {
+    "project_name": "PrelimGPRTest-1112Prelim_HvsOld-S22-limfreq2",
+    "seed": 654322,
+    "paths": {
+      "scratch_root": "/scratch/tolber3/",
+      "dataset_raw_subdir": "/home/tolber3/plasticParticleTest/bactTestData/",
+      "remake_processed_data": false,
+      "recalc_data": false,
+      "checkpoints_subdir": "checkpoints/Bact",
+      "logs_subdir": "logs/Bact",
+      "aim_repo_subdir": "aim-repos/Bact",
+      "run_dir": "/home/tolber3/plasticParticleTest/BML",
+      "train_datasets": [
+        "1112_ECH-S22",
+        "1112_ECK12-S22",
+        "1112_ECB-S22"
+      ],
+      "test_datasets": [
+        "1029_S22_ECH7-1",
+        "1029_S22_ECH7-2"
+      ]
+    },
+    "training": {
+      "table": "dS",
+      "target_column": "label",
+      "target_mode": "raw",
+      "drop_ext": true,
+      "freqs": "all",
+      "test_size": 0.5,
+      "feature_regex": null,
+      "impute_strategy": "median",
+      "standardize": true,
+      "scaler": "robust",
+      "n_restarts_optimizer": 10,
+      "max_iter_predict": 50,
+      "multi_class": "one_vs_rest",
+      "max_train_rows": null,
+      "aim_enabled": true,
+      "save_predictions": true,
+      "feature_importance": {
+        "enabled": true,
+        "split": "test",
+        "scoring": "f1_macro",
+        "n_repeats": 5,
+        "max_rows": null,
+        "top_n_aim": 50
+      },
+      "kernel": {
+        "type": "rbf",
+        "constant_value": 10.0,
+        "length_scale": 1.0
+      }
+    },
+    "form_sets": {
+      "dataset_processed_subdir": "BactData/MLSets/Prelim_Pathogen",
+      "missing_frequency_strategy": "duplicate_cycle",
+      "write_csv_fallback": false,
+      "travel_distance_um": 120.0,
+      "metadata_dir": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs",
+      "calculations": {
+        "use_voloutput": true,
+        "calculate_missing_in_script": false
+      },
+      "outputs": [
+        {
+          "name": "1029_S11S22_ECH7-all",
+          "mode": "all",
+          "datasets": {
+            "1029Bact1VID": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            },
+            "1029Bact1VIDS22": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            },
+            "1029Bact2VID": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            },
+            "1029Bact2VIDS22": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1029_S11_ECH7-all",
+          "mode": "all",
+          "datasets": {
+            "1029Bact1VID": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            },
+            "1029Bact2VID": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1029_S22_ECH7-all",
+          "mode": "all",
+          "datasets": {
+            "1029Bact1VIDS22": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            },
+            "1029Bact2VIDS22": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1029_S11S22_ECH7-1",
+          "mode": "all",
+          "datasets": {
+            "1029Bact1VID": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            },
+            "1029Bact1VIDS22": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1029_S11_ECH7-1",
+          "mode": "all",
+          "datasets": {
+            "1029Bact1VID": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1029_S22_ECH7-1",
+          "mode": "all",
+          "datasets": {
+            "1029Bact1VIDS22": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1029_S11S22_ECH7-2",
+          "mode": "all",
+          "datasets": {
+            "1029Bact2VID": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            },
+            "1029Bact2VIDS22": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1029_S11_ECH7-2",
+          "mode": "all",
+          "datasets": {
+            "1029Bact2VID": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1029_S22_ECH7-2",
+          "mode": "all",
+          "datasets": {
+            "1029Bact2VIDS22": {
+              "label": "Bact_ECH7",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S11S22_List-all",
+          "mode": "all",
+          "datasets": {
+            "115Bact1VID": {
+              "label": "Bact_List1",
+              "device": "1014-10u_Sngl"
+            },
+            "115Bact1VIDS22": {
+              "label": "Bact_List1",
+              "device": "1014-10u_Sngl"
+            },
+            "115Bact2VID": {
+              "label": "Bact_List2",
+              "device": "1014-10u_Sngl"
+            },
+            "115Bact2VIDS22": {
+              "label": "Bact_List2",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S11_List-all",
+          "mode": "all",
+          "datasets": {
+            "115Bact1VID": {
+              "label": "Bact_List1",
+              "device": "1014-10u_Sngl"
+            },
+            "115Bact2VID": {
+              "label": "Bact_List2",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S22_List-all",
+          "mode": "all",
+          "datasets": {
+            "115Bact1VIDS22": {
+              "label": "Bact_List1",
+              "device": "1014-10u_Sngl"
+            },
+            "115Bact2VIDS22": {
+              "label": "Bact_List2",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S11S22_List-1",
+          "mode": "all",
+          "datasets": {
+            "115Bact1VID": {
+              "label": "Bact_List1",
+              "device": "1014-10u_Sngl"
+            },
+            "115Bact1VIDS22": {
+              "label": "Bact_List1",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S11_List-1",
+          "mode": "all",
+          "datasets": {
+            "115Bact1VID": {
+              "label": "Bact_List1",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S22_List-1",
+          "mode": "all",
+          "datasets": {
+            "115Bact1VIDS22": {
+              "label": "Bact_List1",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S11S22_List-2",
+          "mode": "all",
+          "datasets": {
+            "115Bact2VID": {
+              "label": "Bact_List2",
+              "device": "1014-10u_Sngl"
+            },
+            "115Bact2VIDS22": {
+              "label": "Bact_List2",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S11_List-2",
+          "mode": "all",
+          "datasets": {
+            "115Bact2VID": {
+              "label": "Bact_List2",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "115_S22_List-2",
+          "mode": "all",
+          "datasets": {
+            "115Bact2VIDS22": {
+              "label": "Bact_List2",
+              "device": "1014-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1112_ECB-S11",
+          "mode": "all",
+          "datasets": {
+            "1112Bact2VID": {
+              "label": "Bact_B",
+              "device": "1111-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1112_ECB-S22",
+          "mode": "all",
+          "datasets": {
+            "1112Bact2VIDS22": {
+              "label": "Bact_B",
+              "device": "1111-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1112_ECK12-S11",
+          "mode": "all",
+          "datasets": {
+            "1112Bact1VID": {
+              "label": "Bact_K12",
+              "device": "1111-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1112_ECK12-S22",
+          "mode": "all",
+          "datasets": {
+            "1112Bact1VIDS22": {
+              "label": "Bact_K12",
+              "device": "1111-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1112_ECH-S11",
+          "mode": "all",
+          "datasets": {
+            "1112Bact3VID": {
+              "label": "Bact_H",
+              "device": "1111-10u_Sngl"
+            }
+          }
+        },
+        {
+          "name": "1112_ECH-S22",
+          "mode": "all",
+          "datasets": {
+            "1112Bact3VIDS22": {
+              "label": "Bact_H",
+              "device": "1111-10u_Sngl"
+            }
+          }
+        }
+      ]
+    },
+    "_config_path": "/home/tolber3/plasticParticleTest/BML/configs/gpr_config-1029.yaml"
+  },
+  "outputs": [
+    {
+      "name": "1029_S11S22_ECH7-all",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 362,
+        "full": 362
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-all_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-all_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S11S22_ECH7-all.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-all.md"
+    },
+    {
+      "name": "1029_S11_ECH7-all",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 178,
+        "full": 178
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-all_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-all_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S11_ECH7-all.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-all.md"
+    },
+    {
+      "name": "1029_S22_ECH7-all",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 184,
+        "full": 184
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-all_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-all_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S22_ECH7-all.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-all.md"
+    },
+    {
+      "name": "1029_S11S22_ECH7-1",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 320,
+        "full": 320
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-1_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-1_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S11S22_ECH7-1.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-1.md"
+    },
+    {
+      "name": "1029_S11_ECH7-1",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 157,
+        "full": 157
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-1_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-1_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S11_ECH7-1.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-1.md"
+    },
+    {
+      "name": "1029_S22_ECH7-1",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 163,
+        "full": 163
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-1_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-1_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S22_ECH7-1.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-1.md"
+    },
+    {
+      "name": "1029_S11S22_ECH7-2",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 42,
+        "full": 42
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-2_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-2_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S11S22_ECH7-2.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11S22_ECH7-2.md"
+    },
+    {
+      "name": "1029_S11_ECH7-2",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 21,
+        "full": 21
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-2_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-2_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S11_ECH7-2.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S11_ECH7-2.md"
+    },
+    {
+      "name": "1029_S22_ECH7-2",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 21,
+        "full": 21
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-2_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-2_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1029_S22_ECH7-2.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1029_S22_ECH7-2.md"
+    },
+    {
+      "name": "115_S11S22_List-all",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 148,
+        "full": 148
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-all_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-all_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S11S22_List-all.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-all.md"
+    },
+    {
+      "name": "115_S11_List-all",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 81,
+        "full": 81
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-all_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-all_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S11_List-all.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-all.md"
+    },
+    {
+      "name": "115_S22_List-all",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 67,
+        "full": 67
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-all_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-all_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S22_List-all.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-all.md"
+    },
+    {
+      "name": "115_S11S22_List-1",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 91,
+        "full": 91
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-1_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-1_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S11S22_List-1.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-1.md"
+    },
+    {
+      "name": "115_S11_List-1",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 52,
+        "full": 52
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-1_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-1_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S11_List-1.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-1.md"
+    },
+    {
+      "name": "115_S22_List-1",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 39,
+        "full": 39
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-1_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-1_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S22_List-1.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-1.md"
+    },
+    {
+      "name": "115_S11S22_List-2",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 57,
+        "full": 57
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-2_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-2_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S11S22_List-2.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11S22_List-2.md"
+    },
+    {
+      "name": "115_S11_List-2",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 29,
+        "full": 29
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-2_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-2_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S11_List-2.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S11_List-2.md"
+    },
+    {
+      "name": "115_S22_List-2",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 28,
+        "full": 28
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-2_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-2_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/115_S22_List-2.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/115_S22_List-2.md"
+    },
+    {
+      "name": "1112_ECB-S11",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 30,
+        "full": 30
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECB-S11_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECB-S11_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1112_ECB-S11.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECB-S11.md"
+    },
+    {
+      "name": "1112_ECB-S22",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 28,
+        "full": 28
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECB-S22_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECB-S22_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1112_ECB-S22.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECB-S22.md"
+    },
+    {
+      "name": "1112_ECK12-S11",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 52,
+        "full": 52
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECK12-S11_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECK12-S11_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1112_ECK12-S11.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECK12-S11.md"
+    },
+    {
+      "name": "1112_ECK12-S22",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 53,
+        "full": 53
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECK12-S22_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECK12-S22_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1112_ECK12-S22.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECK12-S22.md"
+    },
+    {
+      "name": "1112_ECH-S11",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 50,
+        "full": 50
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECH-S11_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECH-S11_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1112_ECH-S11.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECH-S11.md"
+    },
+    {
+      "name": "1112_ECH-S22",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        4.2,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 37,
+        "full": 37
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECH-S22_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECH-S22_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/1112_ECH-S22.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/Prelim_Pathogen/1112_ECH-S22.md"
+    }
+  ]
+}

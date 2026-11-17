@@ -1,0 +1,110 @@
+{
+  "name": "init_610-P",
+  "created_utc": "2026-07-03T17:08:18.859891+00:00",
+  "effective_config": {
+    "project_name": "InitGPRBactTest1",
+    "seed": 654322,
+    "paths": {
+      "scratch_root": "/scratch/tolber3/",
+      "dataset_raw_subdir": "/home/tolber3/plasticParticleTest/bactTestData/",
+      "remake_processed_data": false,
+      "recalc_data": false,
+      "checkpoints_subdir": "checkpoints/Bact",
+      "logs_subdir": "logs/Bact",
+      "aim_repo_subdir": "aim-repos/Bact",
+      "run_dir": "/home/tolber3/plasticParticleTest/BML",
+      "train_datasets": [
+        "initTrain-616BP-622BP"
+      ],
+      "test_datasets": [
+        "initTest-610BP"
+      ]
+    },
+    "training": {
+      "table": "dS",
+      "target_column": "label",
+      "target_mode": "binary_bacteria_particle",
+      "drop_ext": false,
+      "test_size": 0.25,
+      "feature_regex": null,
+      "impute_strategy": "median",
+      "standardize": true,
+      "scaler": "robust",
+      "n_restarts_optimizer": 0,
+      "max_iter_predict": 100,
+      "multi_class": "one_vs_rest",
+      "max_train_rows": null,
+      "aim_enabled": true,
+      "save_predictions": true,
+      "kernel": {
+        "type": "rbf",
+        "constant_value": 10.0,
+        "length_scale": 1.0
+      }
+    },
+    "form_sets": {
+      "dataset_processed_subdir": "BactData/MLSets/init_610-P",
+      "missing_frequency_strategy": "duplicate_cycle",
+      "write_csv_fallback": false,
+      "travel_distance_um": 120.0,
+      "metadata_dir": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs",
+      "calculations": {
+        "use_voloutput": true,
+        "calculate_missing_in_script": false
+      },
+      "outputs": [
+        {
+          "name": "initTest-610P",
+          "mode": "all",
+          "datasets": {
+            "610PtclVID": {
+              "label": "Particle",
+              "device": "68-10u"
+            }
+          }
+        }
+      ]
+    },
+    "_config_path": "/home/tolber3/plasticParticleTest/BML/configs/gpr_config.yaml"
+  },
+  "outputs": [
+    {
+      "name": "initTest-610P",
+      "mode": "all",
+      "frequencies_ghz": [
+        0.08,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        3.5,
+        4.2,
+        4.5,
+        5.0,
+        5.5,
+        6.5,
+        7.0,
+        8.0,
+        9.0
+      ],
+      "row_counts": {
+        "dS": 31,
+        "full": 31
+      },
+      "outputs": {
+        "dS": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_610-P/initTest-610P_dS.parquet",
+          "csv_fallback": null
+        },
+        "full": {
+          "parquet": "/scratch/tolber3/BactData/MLSets/init_610-P/initTest-610P_full.parquet",
+          "csv_fallback": null
+        }
+      },
+      "metadata_json": "/home/tolber3/plasticParticleTest/BML/scripts/data_MDs/initTest-610P.JSON",
+      "metadata_md": "/scratch/tolber3/BactData/MLSets/init_610-P/initTest-610P.md"
+    }
+  ]
+}
